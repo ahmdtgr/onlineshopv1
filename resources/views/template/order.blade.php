@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesanan - Fashion Store</title>
+    <title>Pesanan - Kanal Dagang</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -58,7 +58,7 @@
                     <div class="flex items-center justify-between mb-2">
                         <div class="flex items-center gap-2">
                             <i class="bi bi-shop text-primary"></i>
-                            <span class="font-medium">Dewakoding Store</span>
+                            <span class="font-medium">Kanal Dagang Store</span>
                         </div>
                         <span class="text-primary font-medium">Dikemas</span>
                     </div>
@@ -108,7 +108,7 @@
                     <div class="flex items-center justify-between mb-2">
                         <div class="flex items-center gap-2">
                             <i class="bi bi-shop text-primary"></i>
-                            <span class="font-medium">Dewakoding Store</span>
+                            <span class="font-medium">Kanal Dagang Store</span>
                         </div>
                         <span class="text-orange-500 font-medium">Belum Bayar</span>
                     </div>
@@ -158,7 +158,7 @@
                     <div class="flex items-center justify-between mb-2">
                         <div class="flex items-center gap-2">
                             <i class="bi bi-shop text-primary"></i>
-                            <span class="font-medium">Dewakoding Store</span>
+                            <span class="font-medium">Kanal Dagang Store</span>
                         </div>
                         <span class="text-green-500 font-medium">Selesai</span>
                     </div>

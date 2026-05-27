@@ -4,7 +4,7 @@
             <!-- Logo & Welcome Text -->
             <div class="text-center mb-8">
                 <div class="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-2xl mx-auto flex items-center justify-center mb-6 shadow-lg">
-                    <img src="https://dewakoding.com/user/img/logo.png" alt="Logo" class="w-12 h-12 brightness-0 invert">
+                    <img src="/image/store.png" alt="Logo" class="w-12 h-12 brightness-0 invert">
                 </div>
                 <h1 class="text-3xl font-bold text-gray-800 mb-2">Buat Akun Baru</h1>
                 <p class="text-gray-500">Daftar untuk memulai berbelanja</p>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keranjang - Fashion Store</title>
+    <title>Keranjang - Kanal Dagang</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -37,7 +37,7 @@
             <div class="pt-4">
                 <div class="flex items-center gap-2 mb-4">
                     <i class="bi bi-shop text-lg text-primary"></i>
-                    <span class="font-medium">Dewakoding Store</span>
+                    <span class="font-medium">Kanal Dagang Store</span>
                 </div>
 
                 <!-- Cart Items -->

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Fashion Store</title>
+    <title>Login - Kanal Dagang</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -26,7 +26,7 @@
             <!-- Logo & Welcome Text -->
             <div class="text-center mb-8 pt-8">
                 <div class="w-24 h-24 bg-gradient-to-br from-primary to-secondary rounded-3xl mx-auto flex items-center justify-center mb-6">
-                    <img src="https://dewakoding.com/user/img/logo.png" alt="Logo" class="w-14 h-14 brightness-0 invert">
+                    <img src="/image/store.png" alt="Logo" class="w-14 h-14 brightness-0 invert">
                 </div>
                 <h1 class="text-2xl font-bold text-gray-800 mb-2">Selamat Datang</h1>
                 <p class="text-gray-500">Silakan login untuk melanjutkan</p>

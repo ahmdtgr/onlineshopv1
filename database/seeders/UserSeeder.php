@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
         // Admin User
         User::create([
             'name' => 'Admin',
-            'email' => 'admin@dewakoding.com',
+            'email' => 'admin@kanaldagang.com',
             'password' => Hash::make('password'),
             'is_admin' => 1,
             'email_verified_at' => now(),
@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
         // Regular User
         User::create([
             'name' => 'User',
-            'email' => 'user@dewakoding.com',
+            'email' => 'user@kanaldagang.com',
             'password' => Hash::make('password'),
             'is_admin' => 0,
             'email_verified_at' => now(),

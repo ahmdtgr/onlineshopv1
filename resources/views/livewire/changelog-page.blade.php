@@ -9,7 +9,7 @@
 
                 <h1 class="text-3xl font-bold leading-tight text-gray-900 md:text-4xl">Changelog</h1>
                 <p class="mt-3 text-sm leading-relaxed text-gray-600 md:text-base">
-                    Semua update terbaru untuk DewaOlshop. Halaman ini menampilkan fitur baru,
+                    Semua update terbaru untuk Kanal Dagang. Halaman ini menampilkan fitur baru,
                     peningkatan performa, dan perbaikan bug di setiap rilis.
                 </p>
             </div>

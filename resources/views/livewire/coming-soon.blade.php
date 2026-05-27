@@ -33,7 +33,7 @@
 
         <!-- Footer -->
         <p class="text-center text-gray-500 text-sm mt-6">
-            &copy; {{ date('Y') }} dewakoding.com | All rights reserved.
+            &copy; {{ date('Y') }} kanaldagang.com | All rights reserved.
         </p>
     </div>
 </div>

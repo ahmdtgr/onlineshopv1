@@ -4,7 +4,7 @@
             <!-- Logo & Welcome Text -->
             <div class="mb-8 text-center">
                 <div class="flex items-center justify-center w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-primary to-secondary rounded-2xl shadow-lg">
-                    <img src="https://dewakoding.com/user/img/logo.png" alt="Logo" class="w-12 h-12 brightness-0 invert">
+                    <img src="/image/store.png" alt="Logo" class="w-12 h-12 brightness-0 invert">
                 </div>
                 <h1 class="mb-2 text-3xl font-bold text-gray-800">Selamat Datang</h1>
                 <p class="text-gray-500">Silakan login untuk melanjutkan</p>
@@ -83,7 +83,7 @@
                     <div class="space-y-1 text-xs text-blue-700">
                         <div class="flex items-center gap-2">
                             <i class="bi bi-envelope"></i>
-                            <span>admin@dewakoding.com</span>
+                            <span>admin@kanaldagang.com</span>
                         </div>
                         <div class="flex items-center gap-2">
                             <i class="bi bi-key"></i>
