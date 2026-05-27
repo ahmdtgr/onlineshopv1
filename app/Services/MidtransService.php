@@ -96,12 +96,13 @@ class MidtransService
                     "/snap/v2/vtweb" . $snapToken
             ];
         } catch(\Exception $e) {
-            // /* Original code:
-            // return [
-            //     'success' => false,
-            //     'message' => $e->getMessage()
-            // ];
-            // */
+            /*
+            // Kode Asli (Nonaktif):
+            return [
+                'success' => false,
+                'message' => $e->getMessage()
+            ];
+            */
 
             // Fallback for Demo Mode (Sandbox) when keys are missing or invalid
             \Log::warning('Midtrans token generation failed, using mock token for demo mode: ' . $e->getMessage());
