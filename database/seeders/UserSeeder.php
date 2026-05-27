@@ -14,7 +14,8 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // Admin User
+        // Admin User (Commented out for demo security)
+        /*
         User::create([
             'name' => 'Admin',
             'email' => 'admin@kanaldagang.com',
@@ -22,6 +23,7 @@ class UserSeeder extends Seeder
             'is_admin' => 1,
             'email_verified_at' => now(),
         ]);
+        */
 
         // Regular User
         User::create([
@@ -32,6 +34,6 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
         ]);
 
-        echo "✓ 2 users created (1 admin, 1 regular user)\n";
+        echo "✓ 1 user created (regular user)\n";
     }
 }

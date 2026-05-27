@@ -83,7 +83,7 @@
                     <div class="space-y-1 text-xs text-blue-700">
                         <div class="flex items-center gap-2">
                             <i class="bi bi-envelope"></i>
-                            <span>admin@kanaldagang.com</span>
+                            <span>user@kanaldagang.com</span>
                         </div>
                         <div class="flex items-center gap-2">
                             <i class="bi bi-key"></i>
