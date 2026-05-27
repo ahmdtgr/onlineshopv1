@@ -7,15 +7,6 @@ export default defineConfig({
             input: ['resources/css/app.css', 'resources/js/app.js'],
             refresh: true,
         }),
-        {
-            name: 'force-exit',
-            closeBundle() {
-                setTimeout(() => process.exit(0), 100);
-            },
-        },
     ],
-    build: {
-        sourcemap: false,
-    },
 });
 
