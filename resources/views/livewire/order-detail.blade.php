@@ -769,9 +769,10 @@
             const orderId = "{{$order->order_number}}";
             const orderPaymentStatus = "{{$order->payment_status}}";
             const orderShippingStatus = "{{$order->shipping_status}}";
+            const orderStatus = "{{$order->status}}";
 
             // Tampilkan popup Midtrans hanya jika status masih pending
-            if (snapToken && orderStatus === 'pending') {
+            if (snapToken && orderStatus === 'pending' && !snapToken.startsWith('demo-token-')) {
                 try {
                     window.snap.pay(snapToken, {
                         onSuccess: function (result) {

@@ -523,6 +523,12 @@
                 const orderId = data[0].order_id;
 
                 if (snapToken) {
+                    if (snapToken.startsWith('demo-token-')) {
+                        // Handler khusus mode demo
+                        alert('Mode Demo: Pembayaran Virtual disimulasikan berhasil otomatis!');
+                        window.location.href = `/order-detail/${orderId}`;
+                        return;
+                    }
                     try {
                         window.snap.pay(snapToken, {
                             onSuccess: function(result) {
