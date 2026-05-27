@@ -1,0 +1,105 @@
+# Advanced GitLab CI/CD for Filament Online Shop
+stages:
+  - test
+  - deploy
+
+variables:
+  SSH_PRIVATE_KEY: ${SSH_PRIVATE_KEY}
+  SERVER_IP: ${SERVER_IP}
+  SERVER_PATH: ${SERVER_PATH}
+
+default:
+  before_script:
+    - apt-get update -y
+    - apt-get install -y ssh git curl
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+
+# Test stage (optional)
+test:
+  stage: test
+  script:
+    - curl -sS https://getcomposer.org/installer | php
+    - php composer.phar install
+    - php artisan key:generate
+    - php artisan test
+  only:
+    - main
+    - develop
+  allow_failure: true
+
+# Production deployment
+deploy_production:
+  stage: deploy
+  script:
+    # Create backup before deployment
+    - ssh root@$SERVER_IP "cd $SERVER_PATH && php artisan down"
+    - ssh root@$SERVER_IP "mysqldump -u filament_user -p\$DB_PASSWORD filament_shop > /backup/db_backup_\$(date +%Y%m%d_%H%M%S).sql"
+    
+    # Pull latest code
+    - ssh root@$SERVER_IP "cd $SERVER_PATH && git pull origin main"
+    
+    # Install/update composer dependencies
+    - ssh root@$SERVER_IP "cd $SERVER_PATH && composer install --no-dev --optimize-autoloader"
+    
+    # Run migrations
+    - ssh root@$SERVER_IP "cd $SERVER_PATH && php artisan migrate --force"
+    
+    # Filament specific commands
+    - ssh root@$SERVER_IP "cd $SERVER_PATH && php artisan filament:upgrade"
+    - ssh root@$SERVER_IP "cd $SERVER_PATH && php artisan storage:link"
+    
+    # Build assets if needed
+    - ssh root@$SERVER_IP "cd $SERVER_PATH && npm install && npm run build || true"
+    
+    # Cache commands
+    - ssh root@$SERVER_IP "cd $SERVER_PATH && php artisan config:cache"
+    - ssh root@$SERVER_IP "cd $SERVER_PATH && php artisan route:cache"
+    - ssh root@$SERVER_IP "cd $SERVER_PATH && php artisan view:cache"
+    
+    # Set proper permissions
+    - ssh root@$SERVER_IP "cd $SERVER_PATH && chown -R www-data:www-data storage bootstrap/cache public/storage"
+    - ssh root@$SERVER_IP "cd $SERVER_PATH && chmod -R 775 storage bootstrap/cache public/storage"
+    
+    # Restart services
+    - ssh root@$SERVER_IP "systemctl restart frankenphp"
+    - ssh root@$SERVER_IP "systemctl restart laravel-queue || true"
+    
+    # Bring application back up
+    - ssh root@$SERVER_IP "cd $SERVER_PATH && php artisan up"
+    
+    # Health check
+    - sleep 10
+    - curl -f http://$SERVER_IP || exit 1
+  
+  only:
+    - main
+  
+  environment:
+    name: production
+    url: http://$SERVER_IP
+  
+  when: manual  # Require manual trigger for production
+
+# Staging deployment
+deploy_staging:
+  stage: deploy
+  script:
+    - ssh root@$SERVER_IP "cd $SERVER_PATH && git pull origin develop"
+    - ssh root@$SERVER_IP "cd $SERVER_PATH && composer install --optimize-autoloader"
+    - ssh root@$SERVER_IP "cd $SERVER_PATH && php artisan migrate"
+    - ssh root@$SERVER_IP "cd $SERVER_PATH && php artisan config:cache"
+    - ssh root@$SERVER_IP "cd $SERVER_PATH && php artisan route:cache"
+    - ssh root@$SERVER_IP "cd $SERVER_PATH && php artisan view:cache"
+    - ssh root@$SERVER_IP "cd $SERVER_PATH && chown -R www-data:www-data storage bootstrap/cache"
+    - ssh root@$SERVER_IP "systemctl restart frankenphp"
+  
+  only:
+    - develop
+  
+  environment:
+    name: staging
+    url: http://$SERVER_IP:8080

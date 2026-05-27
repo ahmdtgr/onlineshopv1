@@ -1,0 +1,159 @@
+[
+  {
+    "version": "v2.7.0",
+    "date": "26 Maret 2026",
+    "highlights": [
+      {
+        "type": "new",
+        "text": "Penambahan fitur export Excel pada Order (summary per pesanan dan detail per item)."
+      }
+    ]
+  },
+  {
+    "version": "v2.6.0",
+    "date": "14 Februari 2026",
+    "highlights": [
+      {
+        "type": "improved",
+        "text": "Peningkatan versi Livewire ke versi terbaru."
+      },
+      {
+        "type": "new",
+        "text": "Penambahan fitur rating dan review produk."
+      },
+      {
+        "type": "improved",
+        "text": "Peningkatan SEO untuk optimasi mesin pencari."
+      }
+    ]
+  },
+  {
+    "version": "v2.5.0",
+    "date": "8 Januari 2026",
+    "highlights": [
+      {
+        "type": "new",
+        "text": "Penambahan dukungan produk digital."
+      },
+      {
+        "type": "improved",
+        "text": "Penyesuaian media query untuk tampilan mobile dan desktop."
+      },
+      {
+        "type": "new",
+        "text": "Penambahan fitur lupa password berbasis SMTP."
+      }
+    ]
+  },
+  {
+    "version": "v2.4.0",
+    "date": "27 Desember 2025",
+    "highlights": [
+      {
+        "type": "new",
+        "text": "Penambahan pengaturan email dari database dan konfigurasi mail otomatis."
+      },
+      {
+        "type": "new",
+        "text": "Penambahan pengaturan Midtrans Merchant ID pada konfigurasi dan seeder."
+      },
+      {
+        "type": "new",
+        "text": "Penambahan fitur voucher pada pesanan, termasuk perhitungan diskon dan pembaruan antarmuka."
+      },
+      {
+        "type": "new",
+        "text": "Implementasi notifikasi email status pesanan beserta manajemen pengaturannya."
+      }
+    ]
+  },
+  {
+    "version": "v2.3.0",
+    "date": "20 Desember 2025",
+    "highlights": [
+      {
+        "type": "new",
+        "text": "Penambahan integrasi notifikasi Midtrans untuk pembaruan status pesanan otomatis."
+      },
+      {
+        "type": "new",
+        "text": "Penambahan pembuatan order ke Biteship beserta informasi pelacakan dan riwayat pengiriman pada detail pesanan."
+      },
+      {
+        "type": "improved",
+        "text": "Peningkatan logika pengecekan status pembayaran agar tidak melakukan pembaruan yang tidak perlu."
+      },
+      {
+        "type": "improved",
+        "text": "Pembaruan alur status pesanan serta penyempurnaan antarmuka detail pesanan dan checkout."
+      },
+      {
+        "type": "improved",
+        "text": "Peningkatan penanganan unggah bukti pembayaran dan umpan balik antarmuka untuk pengguna."
+      },
+      {
+        "type": "new",
+        "text": "Penambahan fitur unduh dan pratinjau invoice serta middleware admin."
+      },
+      {
+        "type": "fixed",
+        "text": "Perbaikan bug pada status order, edit store, dan tampilan harga di halaman home store."
+      }
+    ]
+  },
+  {
+    "version": "v2.2.0",
+    "date": "13 April 2025",
+    "highlights": [
+      {
+        "type": "new",
+        "text": "Penambahan fitur unduh invoice serta perbaikan bug saat pembuatan produk."
+      }
+    ]
+  },
+  {
+    "version": "v2.1.0",
+    "date": "6 Maret 2025",
+    "highlights": [
+      {
+        "type": "fixed",
+        "text": "Perbaikan tampilan detail pesanan dengan varian."
+      },
+      {
+        "type": "new",
+        "text": "Pembaruan halaman checkout agar alur pembayaran lebih baik."
+      },
+      {
+        "type": "fixed",
+        "text": "Perbaikan penambahan rentang harga produk."
+      },
+      {
+        "type": "new",
+        "text": "Penambahan opsi varian pada produk."
+      },
+      {
+        "type": "fixed",
+        "text": "Perbaikan komponen pilihan varian produk."
+      },
+      {
+        "type": "new",
+        "text": "Penambahan fitur varian produk."
+      }
+    ]
+  },
+  {
+    "version": "v2.0.1",
+    "date": "11 Februari 2025",
+    "highlights": [
+        {
+            "type": "fixed",
+            "text": "Perbaikan bug pada fitur edit user."
+        }
+    ]
+  },
+  {
+    "version": "v2.0.0",
+    "date": "9 Februari 2025",
+    "highlights": []
+  }
+]

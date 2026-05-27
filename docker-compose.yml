@@ -1,0 +1,24 @@
+services:
+  app:
+    build: .
+    container_name: onlineshop_app
+    working_dir: /var/www
+    volumes:
+      - .:/var/www
+    ports:
+      - "8000:8000"
+      - "5173:5173"
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    container_name: onlineshop_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: onlineshop
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: root
+    ports:
+      - "3307:3306"

@@ -1,0 +1,333 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\ProductVariant;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
+
+class ProductSeeder extends Seeder
+{
+    /**
+     * Download image from Unsplash and save to storage
+     */
+    private function downloadImageFromUnsplash($query, $productName): ?string
+    {
+        try {
+            // Download image dari Unsplash dengan query yang sesuai
+            $response = Http::timeout(10)->get('https://source.unsplash.com/800x600/', [
+                'q' => $query
+            ]);
+            
+            if ($response->successful()) {
+                // Generate unique filename
+                $filename = 'products/' . \Illuminate\Support\Str::slug($productName) . '-' . time() . '.jpg';
+                
+                // Save image to storage/app/public
+                Storage::disk('public')->put($filename, $response->body());
+                
+                return $filename;
+            }
+        } catch (\Exception $e) {
+            // Log error but continue seeding
+            \Log::warning("Failed to download image for {$productName}: " . $e->getMessage());
+        }
+        
+        return null;
+    }
+
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        $products = [
+            // Kemeja
+            [
+                'category' => 'Kemeja',
+                'products' => [
+                    [
+                        'name' => 'Kemeja Formal Pria',
+                        'description' => 'Kemeja formal berkualitas tinggi dengan bahan katun premium, cocok untuk acara formal dan kantor',
+                        'weight' => 250, // gram
+                        'height' => 2,
+                        'width' => 40,
+                        'length' => 60,
+                        'image_query' => 'formal shirt men',
+                        'variants' => [
+                            ['size' => 'S', 'color' => 'Putih', 'price' => 199000, 'stock' => 20],
+                            ['size' => 'M', 'color' => 'Putih', 'price' => 199000, 'stock' => 25],
+                            ['size' => 'L', 'color' => 'Putih', 'price' => 199000, 'stock' => 30],
+                            ['size' => 'XL', 'color' => 'Putih', 'price' => 209000, 'stock' => 20],
+                            ['size' => 'S', 'color' => 'Biru', 'price' => 199000, 'stock' => 15],
+                            ['size' => 'M', 'color' => 'Biru', 'price' => 199000, 'stock' => 20],
+                            ['size' => 'L', 'color' => 'Biru', 'price' => 199000, 'stock' => 25],
+                            ['size' => 'XL', 'color' => 'Biru', 'price' => 209000, 'stock' => 15],
+                        ]
+                    ],
+                    [
+                        'name' => 'Kemeja Casual Wanita',
+                        'description' => 'Kemeja casual dengan desain modern dan nyaman, cocok untuk kegiatan sehari-hari',
+                        'weight' => 200, // gram
+                        'height' => 2,
+                        'width' => 38,
+                        'length' => 55,
+                        'image_query' => 'casual shirt women',
+                        'variants' => [
+                            ['size' => 'S', 'color' => 'Putih', 'price' => 189000, 'stock' => 20],
+                            ['size' => 'M', 'color' => 'Putih', 'price' => 189000, 'stock' => 25],
+                            ['size' => 'L', 'color' => 'Putih', 'price' => 189000, 'stock' => 20],
+                            ['size' => 'S', 'color' => 'Merah', 'price' => 189000, 'stock' => 15],
+                            ['size' => 'M', 'color' => 'Merah', 'price' => 189000, 'stock' => 20],
+                            ['size' => 'L', 'color' => 'Merah', 'price' => 189000, 'stock' => 15],
+                        ]
+                    ]
+                ]
+            ],
+            // Kaos
+            [
+                'category' => 'Kaos',
+                    [
+                        'name' => 'Kaos Polos Premium',
+                        'description' => 'Kaos polos dengan bahan cotton combed 30s, lembut dan adem',
+                        'weight' => 180, // gram
+                        'height' => 1,
+                        'width' => 35,
+                        'length' => 50,
+                        'image_query' => 'plain t-shirt',
+                        'variants' => [
+                        'variants' => [
+                            ['size' => 'S', 'color' => 'Hitam', 'price' => 99000, 'stock' => 30],
+                            ['size' => 'M', 'color' => 'Hitam', 'price' => 99000, 'stock' => 35],
+                            ['size' => 'L', 'color' => 'Hitam', 'price' => 99000, 'stock' => 30],
+                            ['size' => 'XL', 'color' => 'Hitam', 'price' => 109000, 'stock' => 25],
+                            ['size' => 'S', 'color' => 'Putih', 'price' => 99000, 'stock' => 30],
+                            ['size' => 'M', 'color' => 'Putih', 'price' => 99000, 'stock' => 35],
+                            ['size' => 'L', 'color' => 'Putih', 'price' => 99000, 'stock' => 30],
+                            ['size' => 'XL', 'color' => 'Putih', 'price' => 109000, 'stock' => 25],
+                    [
+                        'name' => 'Kaos Graphic Vintage',
+                        'description' => 'Kaos dengan desain graphic vintage, bahan berkualitas dan sablon rubber yang awet',
+                        'weight' => 200, // gram
+                        'height' => 1,
+                        'width' => 35,
+                        'length' => 50,
+                        'image_query' => 'graphic tshirt vintage',
+                        'variants' => [
+                        'length' => 50,
+                        'variants' => [
+                            ['size' => 'S', 'color' => 'Hitam', 'price' => 129000, 'stock' => 20],
+                            ['size' => 'M', 'color' => 'Hitam', 'price' => 129000, 'stock' => 25],
+                            ['size' => 'L', 'color' => 'Hitam', 'price' => 129000, 'stock' => 20],
+                            ['size' => 'XL', 'color' => 'Hitam', 'price' => 139000, 'stock' => 15],
+                            ['size' => 'S', 'color' => 'Abu-abu', 'price' => 129000, 'stock' => 20],
+                            ['size' => 'M', 'color' => 'Abu-abu', 'price' => 129000, 'stock' => 25],
+                            ['size' => 'L', 'color' => 'Abu-abu', 'price' => 129000, 'stock' => 20],
+                            ['size' => 'XL', 'color' => 'Abu-abu', 'price' => 139000, 'stock' => 15],
+                        ]
+                    ]
+                ]
+            ],
+            // Celana
+                    [
+                        'name' => 'Celana Jeans Slim Fit',
+                        'description' => 'Celana jeans dengan model slim fit, bahan denim berkualitas tinggi',
+                        'weight' => 500, // gram
+                        'height' => 3,
+                        'width' => 30,
+                        'length' => 100,
+                        'image_query' => 'jeans slim fit',
+                        'variants' => [
+                        'width' => 30,
+                        'length' => 100,
+                        'variants' => [
+                            ['size' => 'S', 'color' => 'Biru', 'price' => 249000, 'stock' => 15],
+                            ['size' => 'M', 'color' => 'Biru', 'price' => 249000, 'stock' => 20],
+                            ['size' => 'L', 'color' => 'Biru', 'price' => 249000, 'stock' => 15],
+                            ['size' => 'XL', 'color' => 'Biru', 'price' => 259000, 'stock' => 10],
+                            ['size' => 'S', 'color' => 'Hitam', 'price' => 249000, 'stock' => 15],
+                            ['size' => 'M', 'color' => 'Hitam', 'price' => 249000, 'stock' => 20],
+                    [
+                        'name' => 'Celana Chino Panjang',
+                        'description' => 'Celana chino panjang dengan bahan yang nyaman dan tidak mudah kusut',
+                        'weight' => 450, // gram
+                        'height' => 3,
+                        'width' => 30,
+                        'length' => 100,
+                        'image_query' => 'chino pants',
+                        'variants' => [, // gram
+                        'height' => 3,
+                        'width' => 30,
+                        'length' => 100,
+                        'variants' => [
+                            ['size' => 'S', 'color' => 'Hitam', 'price' => 229000, 'stock' => 15],
+                            ['size' => 'M', 'color' => 'Hitam', 'price' => 229000, 'stock' => 20],
+                            ['size' => 'L', 'color' => 'Hitam', 'price' => 229000, 'stock' => 15],
+                            ['size' => 'XL', 'color' => 'Hitam', 'price' => 239000, 'stock' => 10],
+                            ['size' => 'S', 'color' => 'Abu-abu', 'price' => 229000, 'stock' => 15],
+                            ['size' => 'M', 'color' => 'Abu-abu', 'price' => 229000, 'stock' => 20],
+                            ['size' => 'L', 'color' => 'Abu-abu', 'price' => 229000, 'stock' => 15],
+                            ['size' => 'XL', 'color' => 'Abu-abu', 'price' => 239000, 'stock' => 10],
+                        ]
+                    ]
+                ]
+                    [
+                        'name' => 'Jaket Denim Vintage',
+                        'description' => 'Jaket denim dengan style vintage, bahan tebal dan berkualitas',
+                        'weight' => 700, // gram
+                        'height' => 3,
+                        'width' => 45,
+                        'length' => 65,
+                        'image_query' => 'denim jacket vintage',
+                        'variants' => [> 'Jaket denim dengan style vintage, bahan tebal dan berkualitas',
+                        'weight' => 700, // gram
+                        'height' => 3,
+                        'width' => 45,
+                        'length' => 65,
+                        'variants' => [
+                    [
+                        'name' => 'Jaket Bomber Casual',
+                        'description' => 'Jaket bomber dengan desain casual modern, cocok untuk berbagai aktivitas',
+                        'weight' => 650, // gram
+                        'height' => 3,
+                        'width' => 45,
+                        'length' => 65,
+                        'image_query' => 'bomber jacket',
+                        'variants' => [t Bomber Casual',
+                        'description' => 'Jaket bomber dengan desain casual modern, cocok untuk berbagai aktivitas',
+                        'weight' => 650, // gram
+                        'height' => 3,
+                        'width' => 45,
+                        'length' => 65,
+                        'variants' => [
+                            ['size' => 'S', 'color' => 'Hitam', 'price' => 329000, 'stock' => 10],
+                            ['size' => 'M', 'color' => 'Hitam', 'price' => 329000, 'stock' => 15],
+                            ['size' => 'L', 'color' => 'Hitam', 'price' => 329000, 'stock' => 10],
+                            ['size' => 'XL', 'color' => 'Hitam', 'price' => 339000, 'stock' => 8],
+                            ['size' => 'S', 'color' => 'Abu-abu', 'price' => 329000, 'stock' => 10],
+                            ['size' => 'M', 'color' => 'Abu-abu', 'price' => 329000, 'stock' => 15],
+                            ['size' => 'L', 'color' => 'Abu-abu', 'price' => 329000, 'stock' => 10],
+                            ['size' => 'XL', 'color' => 'Abu-abu', 'price' => 339000, 'stock' => 8],
+                        ]
+                    [
+                        'name' => 'Dress Casual Elegant',
+                        'description' => 'Dress casual dengan desain elegant, cocok untuk berbagai acara',
+                        'weight' => 350, // gram
+                        'height' => 2,
+                        'width' => 40,
+                        'length' => 90,
+                        'image_query' => 'elegant casual dress',
+                        'variants' => [
+                        'name' => 'Dress Casual Elegant',
+                        'description' => 'Dress casual dengan desain elegant, cocok untuk berbagai acara',
+                        'weight' => 350, // gram
+                        'height' => 2,
+                        'width' => 40,
+                        'length' => 90,
+                        'variants' => [
+                    [
+                        'name' => 'Dress Floral Summer',
+                        'description' => 'Dress dengan motif floral yang fresh, cocok untuk musim panas',
+                        'weight' => 300, // gram
+                        'height' => 2,
+                        'width' => 40,
+                        'length' => 85,
+                        'image_query' => 'floral summer dress',
+                        'variants' => [
+                    [
+                        'name' => 'Dress Floral Summer',
+                        'description' => 'Dress dengan motif floral yang fresh, cocok untuk musim panas',
+                        'weight' => 300, // gram
+                        'height' => 2,
+                        'width' => 40,
+                        'length' => 85,
+                        'variants' => [
+                            ['size' => 'S', 'color' => 'Biru', 'price' => 259000, 'stock' => 12],
+                            ['size' => 'M', 'color' => 'Biru', 'price' => 259000, 'stock' => 15],
+                            ['size' => 'L', 'color' => 'Biru', 'price' => 259000, 'stock' => 12],
+                            ['size' => 'S', 'color' => 'Merah', 'price' => 259000, 'stock' => 10],
+                            ['size' => 'M', 'color' => 'Merah', 'price' => 259000, 'stock' => 12],
+                            ['size' => 'L', 'color' => 'Merah', 'price' => 259000, 'stock' => 10],
+                        ]
+                    ]
+                ]
+            ]
+        ];
+
+        foreach ($products as $categoryProducts) {
+            $category = Category::where('name', $categoryProducts['category'])->first();
+            
+            if (!$category) {
+                continue;
+            }
+            
+            foreach ($categoryProducts['products'] as $product) {
+                $sku = Product::generateSku($product['name']);
+                
+                // Download gambar dari Unsplash
+                $images = [];
+                if (isset($product['image_query'])) {
+                    echo "Downloading images for {$product['name']}...\n";
+                    
+                    // Download 3 gambar untuk setiap produk
+                    for ($i = 1; $i <= 3; $i++) {
+                        $imagePath = $this->downloadImageFromUnsplash($product['image_query'], $product['name'] . "-{$i}");
+                        if ($imagePath) {
+                            $images[] = $imagePath;
+                            echo "  ✓ Image {$i} downloaded\n";
+                        } else {
+                            echo "  ✗ Image {$i} failed\n";
+                        }
+                        
+                        // Small delay to avoid rate limiting
+                        sleep(1);
+                    }
+                }
+                
+                $createdProduct = Product::create([
+                    'category_id' => $category->id,
+                    'name' => $product['name'],
+                    'slug' => Product::generateUniqueSlug($product['name']),
+                    'sku' => $sku,
+                    'description' => $product['description'],
+                    'price' => null, // Price nullable karena menggunakan variant
+                    'stock' => null, // Stock nullable karena menggunakan variant
+                    'is_active' => true,
+                    'images' => $images,
+                    'weight' => $product['weight'],
+                    'height' => $product['height'],
+                    'width' => $product['width'],
+                    'length' => $product['length'],
+                    'has_variants' => true,
+                ]);
+                
+                // Create variants untuk produk ini
+                if (isset($product['variants'])) {
+                    foreach ($product['variants'] as $variant) {
+                        // Generate SKU variant berdasarkan format yang ada di database
+                        $skuPrefix = explode('-', $sku)[0];
+                        $colorAbbr = $variant['color'] === 'Abu-abu' ? 'ABU' : strtoupper($variant['color']);
+                        $variantSku = $skuPrefix . '-001-' . $variant['size'] . '-' . $colorAbbr;
+                        
+                        ProductVariant::create([
+                            'product_id' => $createdProduct->id,
+                            'variant_type1' => 'Ukuran',
+                            'variant_option1' => $variant['size'],
+                            'variant_type2' => 'Warna',
+                            'variant_option2' => $variant['color'],
+                            'sku' => $variantSku,
+                            'price' => $variant['price'],
+                            'stock' => $variant['stock'],
+                            'is_active' => true,
+                        ]);
+                    }
+                }
+            }
+        }
+    }
+
+}
