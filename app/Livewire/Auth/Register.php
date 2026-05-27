@@ -60,16 +60,22 @@ class Register extends Component
         }
 
         $validateData = $this->validate();
+        // $isFirstUser = User::count() === 0;
 
         $user = User::create([
             'name' => $validateData['name'],
             'email' => $validateData['email'],
             'password' => Hash::make($validateData['password']),
+            // 'is_admin' => $isFirstUser
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
+
+        // if ($isFirstUser) {
+        //     return redirect()->intended('/admin');
+        // }
 
         return redirect()->route('home');
     }
