@@ -14,11 +14,12 @@ class StoreSeeder extends Seeder
     public function run(): void
     {
         Store::create([
-            'name' => 'Fashion Store',
+            'name' => 'Kanal Dagang',
             'description' => 'Toko pakaian terlengkap dengan berbagai pilihan fashion terkini',
             'image' => null,
-            'banner' => null,
-            'address' => 'Jl. Kenangan 2 Sokaraja Wetan',
+            // existing'banner' => null,//
+            'banner' => 'stores/banner/banner.jpeg',
+            'address' => 'Jalan Batu Tulis 8. Kebon Kelapa, Gambir, Jakarta Pusat, Derah Khusus Ibukota Jakarta',
             'whatsapp' => '62081234567890',
             'shipping_provider' => 'biteship',
             'shipping_api_key' => 'biteship_live.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoib25saW5lc2hvcCIsInVzZXJJZCI6IjZhMTYxMTI1MmU1MmY1NjRiYjZlNjA3YSIsImlhdCI6MTc3OTgzMTI0Nn0.CfDVEAIxdr9foCsMOLPoQ0SGKaP4D4D55dgPbaLnrO8',

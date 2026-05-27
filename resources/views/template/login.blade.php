@@ -20,10 +20,8 @@
     </script>
 </head>
 <body class="bg-gray-50">
-    <!-- Login Page -->
     <div class="max-w-[480px] mx-auto bg-white min-h-screen relative shadow-lg">
         <div class="p-6">
-            <!-- Logo & Welcome Text -->
             <div class="text-center mb-8 pt-8">
                 <div class="w-24 h-24 bg-gradient-to-br from-primary to-secondary rounded-3xl mx-auto flex items-center justify-center mb-6">
                     <img src="/image/store.png" alt="Logo" class="w-14 h-14 brightness-0 invert">
@@ -32,7 +30,6 @@
                 <p class="text-gray-500">Silakan login untuk melanjutkan</p>
             </div>
 
-            <!-- Login Form -->
             <form class="space-y-4">
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
@@ -73,7 +70,6 @@
         </div>
     </div>
 
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </body>
 </html>

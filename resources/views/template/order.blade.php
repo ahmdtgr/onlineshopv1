@@ -21,13 +21,12 @@
 </head>
 <body class="bg-gray-50">
     <div class="max-w-[480px] mx-auto bg-white min-h-screen relative shadow-lg pb-20">
-        <!-- Header -->
+
         <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] bg-white z-50">
             <div class="flex items-center h-16 px-4 border-b border-gray-100">
                 <h1 class="text-lg font-medium">Pesanan Saya</h1>
             </div>
 
-            <!-- Order Status Tabs -->
             <div class="px-4 border-b border-gray-100 bg-white">
                 <div class="flex overflow-x-auto hide-scrollbar gap-2 py-3">
                     <button class="px-4 py-2 rounded-full bg-primary text-white text-sm whitespace-nowrap">
@@ -67,7 +66,6 @@
                     </div>
                 </div>
 
-                <!-- Order Items -->
                 <div class="p-4">
                     <div class="flex gap-3">
                         <img src="https://i.ibb.co.com/JtLB93y/annoyed-young-pretty-girl-putting-fingers-ears-with-closed-eyes-min.jpg" 
@@ -90,7 +88,6 @@
                     </div>
                 </div>
 
-                <!-- Order Actions -->
                 <div class="p-4 border-t border-gray-100 flex justify-end gap-3">
                     <button class="px-4 py-2 text-sm border border-gray-200 rounded-full text-gray-600 hover:border-primary hover:text-primary">
                         Lihat Detail
@@ -101,9 +98,8 @@
                 </div>
             </div>
 
-            <!-- Order Card 2 -->
             <div class="border border-gray-200 rounded-2xl overflow-hidden">
-                <!-- Order Header -->
+
                 <div class="p-4 border-b border-gray-100 bg-gray-50">
                     <div class="flex items-center justify-between mb-2">
                         <div class="flex items-center gap-2">
@@ -140,7 +136,6 @@
                     </div>
                 </div>
 
-                <!-- Order Actions -->
                 <div class="p-4 border-t border-gray-100 flex justify-end gap-3">
                     <button class="px-4 py-2 text-sm border border-gray-200 rounded-full text-gray-600 hover:border-primary hover:text-primary">
                         Batalkan
@@ -151,9 +146,8 @@
                 </div>
             </div>
 
-            <!-- Order Card 3 -->
             <div class="border border-gray-200 rounded-2xl overflow-hidden">
-                <!-- Order Header -->
+
                 <div class="p-4 border-b border-gray-100 bg-gray-50">
                     <div class="flex items-center justify-between mb-2">
                         <div class="flex items-center gap-2">
@@ -167,7 +161,6 @@
                     </div>
                 </div>
 
-                <!-- Order Items -->
                 <div class="p-4">
                     <div class="flex gap-3">
                         <img src="https://i.ibb.co.com/fp3s0b6/pleased-young-pretty-girl-doing-ok-sign-min.jpg" 
@@ -190,7 +183,6 @@
                     </div>
                 </div>
 
-                <!-- Order Actions -->
                 <div class="p-4 border-t border-gray-100 flex justify-end gap-3">
                     <button class="px-4 py-2 text-sm border border-gray-200 rounded-full text-gray-600 hover:border-primary hover:text-primary">
                         Beli Lagi
@@ -213,7 +205,6 @@
         }
     </style>
 
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </body>
 </html>
